@@ -13,7 +13,7 @@ import pandas as pd
 import streamlit as st
 
 LICENCE_LABEL = "Claimed, not verified"
-OUTREACH_TEXT = "Draft ready for review. Click Approve to send."
+OUTREACH_TEXT = "Draft ready for review. Click Approve to record your decision."
 
 # ---------------------------------------------------------------------------
 # Skills vocabulary: canonical name -> patterns that mean the same thing
@@ -218,7 +218,7 @@ DEFAULT_JD = ("Registered nurse, ICU. Minimum 3 years experience. "
 
 def log(event: str, cid: str = "", file: str = ""):
     st.session_state.audit.append({
-        "Time": datetime.now().strftime("%H:%M:%S"), "Event": event,
+        "Time": datetime.utcnow().strftime("%H:%M:%S") + " UTC", "Event": event,
         "Candidate": cid, "File": file})
 
 
